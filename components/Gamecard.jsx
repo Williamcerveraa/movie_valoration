@@ -1,20 +1,37 @@
 import { useEffect, useRef } from "react";
-import { Image, Text, View, StyleSheet, Animated } from "react-native";
+import { Image, Text, View, StyleSheet, Animated, Pressable,} from "react-native";
+import { Score } from "./Score";
+import { Link } from "expo-router";
+import { styled } from "nativewind";
 
-export function Gamecard ({ movie }) {
+const StyledPressable = styled(Pressable);
+
+export function Gamecard({ movie }) {
   return (
-    <View key={movie.id} style={styles.card}>
+   <Link href={`/${movie.id}`} asChild>
+   <StyledPressable>
+     <View
+      className="flex-row gap-4"
+      key={movie.id}
+    >
       <Image
         source={{
           uri: movie.image,
         }}
         style={styles.image}
       />
-      <Text style={styles.title}>{movie.title}</Text>
-      <Text style={styles.overview}>{movie.overview}</Text>
+      <View className="flex-shrink">
+        <Text className = "mb-1" style={styles.title}>{movie.title}</Text>
+        <Score vote_average={movie.vote_average} maxScore={100}></Score>
+        <Text className = "mt-2 flex-shrink-0" style={styles.overview}>{movie.overview.slice(0,150)}...</Text>
+      </View>
     </View>
+   </StyledPressable>
+   
+   
+   </Link>
   );
-};
+}
 
 export function AnimatedGameCard({ movie, index }) {
   const opacity = useRef(new Animated.Value(0)).current;
@@ -63,4 +80,3 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
 });
-

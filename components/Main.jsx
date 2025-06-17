@@ -16,17 +16,12 @@ const Main = () => {
     });
   }, []);
 
-  //EL COMPONENTE SafeAreaView solo sirve para dispositivos IOS
-  // para que el contenido no se superponga con la barra de estado
-  // Con Constants puedes saber varias cosas del dispositivo, las fuentes, etc.
-  // FlatList se utiliza para listas de datos, en cuestión de optimización
-  // ScrollView es para listas pequeñas, debido a que renderiza todo el contenido en primera instancia
   return (
     <>
-      <View style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}>
-        <View style={{ marginBottom: 20 }}>
-          <Logo></Logo>
-        </View>
+      <View
+        className="bg-black"
+        style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}
+      >
         {movies.length === 0 ? (
           <ActivityIndicator />
         ) : (
