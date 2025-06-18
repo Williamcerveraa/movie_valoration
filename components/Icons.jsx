@@ -12,3 +12,11 @@ export const HomeIcon = (props) => (
 export const InfoIcon = (props) => (
   <FontAwesome name="info" size={32} color="white" {...props} />
 );
+
+export const LikeIcon = (props) => (
+  <FontAwesome name="heart-o" size={24} color="black" {...props} />
+);
+
+export const UserIcon = (props) => (
+  <FontAwesome name="user-o" size={24} color="white" {...props} />
+);

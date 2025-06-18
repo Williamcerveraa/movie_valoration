@@ -7,6 +7,7 @@ import { Stack } from "expo-router";
 import { useEffect, useState } from "react";
 import { getMovieDetails } from "../lib/metacritic";
 import { Score } from "../components/Score";
+import { LikeIcon } from "../components/Icons";
 
 export default function Detail() {
   const { movie_id } = useLocalSearchParams();
@@ -22,11 +23,11 @@ export default function Detail() {
     <Screen>
       <Stack.Screen
         options={{
-          headerStyle: { backgroundColor: "#ffee00" },
+          headerStyle: { backgroundColor: "white" },
           headerTintColor: "black",
           headerLeft: () => {},
           headerTitle: "",
-          headerRight: () => {},
+          headerRight: () => <LikeIcon/>,
         }}
       />
       <View>
@@ -38,13 +39,13 @@ export default function Detail() {
               <Image
                 className="mb-4 rounded"
                 source={{ uri: gameInfo.image }}
-                style={{ width: 214, height: 294 }}
+                style={{ width: 354, height: 350}}
               />
               {/* <Score score={gameInfo.vote_average} maxScore={100} /> */}
-              <Text className="text-white text-center font-bold text-xl">
+              <Text className="text-black text-center font-bold text-xl">
                 {gameInfo.title}
               </Text>
-              <Text className="text-white/70 mt-4 text-left mb-8 text-base">
+              <Text className="text-black/70 mt-4 text-left mb-8 text-base">
                 {gameInfo.overview}
               </Text>
             </View>

@@ -9,7 +9,7 @@ const StyledPressable = styled(Pressable);
 export function Gamecard({ movie }) {
   return (
    <Link href={`/${movie.id}`} asChild>
-   <StyledPressable>
+   <StyledPressable className="mb-2 m-2">
      <View
       className="flex-row gap-4"
       key={movie.id}
@@ -20,11 +20,10 @@ export function Gamecard({ movie }) {
         }}
         style={styles.image}
       />
-      <View className="flex-shrink">
+      {/* <View className="flex-shrink">
         <Text className = "mb-1" style={styles.title}>{movie.title}</Text>
-        <Score vote_average={movie.vote_average} maxScore={100}></Score>
-        <Text className = "mt-2 flex-shrink-0" style={styles.overview}>{movie.overview.slice(0,150)}...</Text>
-      </View>
+        <Text className = "mt-2 flex-shrink" style={styles.overview}>{movie.overview.slice(0,150)}...</Text>
+      </View> */}
     </View>
    </StyledPressable>
    
@@ -53,13 +52,6 @@ export function AnimatedGameCard({ movie, index }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#000",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 12,
-  },
   card: {
     marginBottom: 42,
   },
@@ -67,12 +59,11 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 10,
+    marginTop: 10,
   },
   image: {
-    height: 167,
-    width: 147,
-    resizeMode: "contain",
+    height: 220,
+    width: 150,
     borderRadius: 10,
   },
   overview: {

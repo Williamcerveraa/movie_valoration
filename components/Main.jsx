@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { AnimatedGameCard } from "./Gamecard.jsx";
 import Logo from "./Logo.jsx";
+import { Screen } from "./Screen.jsx";
 
 const Main = () => {
   const [movies, setMovies] = useState([]);
@@ -18,12 +19,9 @@ const Main = () => {
 
   return (
     <>
-      <View
-        className="bg-black"
-        style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}
-      >
+      <Screen>
         {movies.length === 0 ? (
-          <ActivityIndicator />
+          <ActivityIndicator color={"#fff"} size={"large"} />
         ) : (
           <FlatList
             data={movies}
@@ -31,9 +29,10 @@ const Main = () => {
             renderItem={({ item, index }) => (
               <AnimatedGameCard movie={item} index={index} />
             )}
+            horizontal
           ></FlatList>
         )}
-      </View>
+      </Screen>
     </>
   );
 };
